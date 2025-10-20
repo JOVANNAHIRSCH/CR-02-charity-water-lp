@@ -14,3 +14,10 @@ Add a section for a real-world impact story with text and an image, and a donati
 
 ## Make It Responsive
 Add CSS media queries so this landing page looks good on both desktop and mobile devices. Add code comments to help explain why we use media queries.
+
+Added simple example files:
+- index.html — basic landing page (hero, story, donate).
+- styles.css — beginner-friendly CSS with comments and a media query.
+
+To open the page from the dev container's terminal, run:
+$BROWSER file:///workspaces/CR-02-charity-water-lp/index.html
