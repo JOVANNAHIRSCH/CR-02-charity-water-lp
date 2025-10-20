@@ -1,285 +1,189 @@
-/* charity: water Brand Colors & Fonts
+/* Basic, beginner-friendly CSS for the landing page.
+   Note: To guarantee Proxima Nova you can host the font or add a webfont import.
+   This file uses a font stack with Proxima Nova first and common fallbacks. */
 
-Primary Colors:
-- Yellow:     #FFC907
-- Blue:       #2E9DF7
+:root {
+  --primary-blue: #2E9DF7;
+  --accent-teal:  #8BD1CB;
+  --donate-color:  #003366; /* ensure donate/cta color variable is set to the requested color */
+  --text-dark:    #222;
+  --muted-bg:     #77A8BB; /* changed background color to the requested #77A8BB */
+}
 
-Secondary Colors:
-- Light Blue: #8BD1CB
-- Green:      #4FCB53
-- Orange:     #FF902A
-- Red:        #F5402C
-- Dark Green: #159A48
-- Pink:       #F16061
-
-Fonts:
-- Proxima Nova
-- Avenir
-
-*/
-
-/* 
-  Charity: Water Landing Page Styles
-  This CSS uses the provided color palette and beginner-friendly styles.
-*/
-
-/* Basic reset for margins and fonts */
+/* ---------- Base reset & typography ---------- */
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "Proxima Nova", "Helvetica Neue", Arial, sans-serif; /* preferred bold-feeling font stack */
-  color: #222;
-  line-height: 1.4;
-  font-weight: 500; /* slightly stronger base weight for a bolder feel */
+  font-family: "Proxima Nova", "Helvetica Neue", Arial, sans-serif; /* preferred stack */
+  color: var(--text-dark);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* apply the new background color to the whole page */
+  background-color: var(--muted-bg);
 }
 
-/* Set up the main font and background color for the whole page */
-body {
-  background-color: #f4f8fb; /* Soft light blue for a fresh look */
-  font-family: 'Avenir', 'Proxima Nova', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #222;
-}
-
-/* Make headings clearly bold to match the requested tone */
+/* Make headings bold to match the requested tone */
 h1, h2 {
   font-weight: 700;
+  margin: 0 0 12px 0;
   letter-spacing: 0.2px;
 }
 
-/* Add a slight shadow and rounded corners to each section for depth */
-section {
-  background: #fff; /* White background for sections */
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 2px 8px rgba(46, 157, 247, 0.07); /* Soft blue shadow */
-  margin: 24px 10px; /* Space between sections */
-  padding: 24px 16px;
+/* Small utility */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* ---------- Hero ---------- */
-/* Large, full-width hero with centered text */
-.hero {
-  position: relative; /* Needed for overlay */
-  /* Set a background image that covers the whole section */
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-                    url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1600&q=60');
-  background-size: cover;      /* Make the image cover the whole area */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat;
-  color: #fff;                 /* White text for contrast */
-  text-align: center;          /* Center the text */
-  padding: 80px 20px;          /* Add space above and below */
-  border-radius: 0 0 16px 16px; /* Only round bottom corners */
-
-  /* Add a dark overlay for better text readability */
-  /* This uses a simple linear-gradient overlay */
-  background-blend-mode: darken;
-  background-color: rgba(46, 157, 247, 0.45); /* Blue overlay */
-}
-
-/* Inner container to limit width */
-.hero-inner {
-  max-width: 900px;
-  margin: 0 auto; /* centers the inner content */
-}
-
-/* Make the headline bold and modern */
-.hero h1 {
-  margin: 0 0 10px 0;
-  font-size: 2.5em;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Soft shadow for readability */
-}
-
-/* Style the subheadline */
-.hero p {
-  margin: 0 0 20px 0;
-  font-size: 1.2em;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.12);
-}
-
-/* ---------- Buttons ---------- */
-/* Simple button styles with comments */
-.btn {
-  display: inline-block;
-  padding: 10px 18px;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-/* Primary button style - use the blue from the palette */
-.btn-primary {
-  background-color: #2E9DF7; /* primary blue */
-  color: white;
-}
-
-/* Secondary button for donation CTA - use the teal from the palette */
-.btn-secondary {
-  background-color: #8BD1CB; /* teal accent */
-  color: white;
-}
-
-/* Story Section Styles */
-.story {
+/* ---------- Header ---------- */
+/* Simple header layout using flexbox for beginners */
+.site-header {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-  background-color: #8BD1CB; /* Secondary Light Blue */
-  color: #222;
-  text-align: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  background: white;
+  border-bottom: 1px solid #e6eef6;
 }
 
-/* Image styling: make responsive */
-.story-image {
-  width: 45%;
-  border-radius: 6px;
-  object-fit: cover;
-}
-
-/* Text column */
-.story-text {
-  width: 55%;
-}
-
-/* Donation section: centered and simple */
-.donate {
-  text-align: center;
-  padding: 30px 20px;
-  background-color: #f7f9fb;
-}
-
-/* Call-to-Action Section Styles */
-.call-to-action {
-  background-color: #FFC907; /* Primary Yellow */
-  color: #222;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-/* Style the impact story image */
-.impact-image {
-  width: 100%;
-  max-width: 320px;
-  border-radius: 10px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(46, 157, 247, 0.10);
-}
-
-/* Donate Button Styles */
-.donate-button {
-  display: inline-block;
-  background-color: #4FCB53; /* Green */
-  color: #fff;
-  padding: 14px 32px;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
+  color: var(--text-dark);
+}
+
+.logo-image {
+  height: 40px;
+  width: auto;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* Header donate button slightly emphasized */
+.donate-btn {
+  padding: 8px 14px;
   border-radius: 6px;
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-top: 18px;
-  box-shadow: 0 2px 8px rgba(79, 203, 83, 0.10);
-  transition: background 0.3s, transform 0.2s;
+  color: #ffffff; /* changed: ensure donate button text is white */
+  background: var(--donate-color); /* use the requested color */
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* Small hover/focus state to indicate interactivity */
+.donate-btn:hover,
+.donate-btn:focus {
+  filter: brightness(0.9);
+}
+
+/* Sign-in button minimal */
+.sign-in {
+  background: transparent;
   border: none;
+  color: var(--text-dark);
+  font-weight: 600;
   cursor: pointer;
 }
 
-/* Change button color when hovered */
-.donate-button:hover {
-  background-color: #159A48; /* Dark Green */
-  transform: translateY(-2px) scale(1.04); /* Slight lift */
+/* ---------- Hero ---------- */
+/* Two-column hero using flexbox. Image and text sit side-by-side on wider screens. */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 20px;
+  background: linear-gradient(180deg, rgba(139,209,203,0.06), rgba(46,157,247,0.02));
 }
 
-/* Add some spacing between sections */
-section {
-  margin-bottom: 20px;
+.hero-text {
+  flex: 1 1 50%;
 }
 
-/* ---------- Footer ---------- */
+.hero-text h1 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.hero-text p {
+  margin: 0 0 18px 0;
+  color: #333;
+}
+
+/* CTA button uses the donate color for a strong action */
+.cta-button {
+  display: inline-block;
+  padding: 12px 18px;
+  background: var(--donate-color); /* changed: use #003366 via variable */
+  color: #ffffff; /* ensure text is white for contrast */
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* small hover/focus state for interactivity */
+.cta-button:hover,
+.cta-button:focus {
+  filter: brightness(0.92);
+}
+
+/* Hero image sizing */
+.hero-image {
+  flex: 1 1 45%;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+}
+
+/* ---------- Simple content defaults ---------- */
+img { max-width: 100%; height: auto; display: block; }
+
+/* ---------- Footer and misc ---------- */
 .site-footer {
   text-align: center;
-  padding: 15px;
-  font-size: 0.9rem;
+  padding: 18px 20px;
   color: #666;
+  background: var(--muted-bg);
 }
 
-/* 
-  Media Queries for Responsive Design
-  Media queries help make your website look good on different screen sizes,
-  like phones (small screens) and computers (large screens).
-*/
-
-/* This media query applies styles when the screen is 600px wide or less (like on most phones) */
-@media (max-width: 600px) {
-  /* Make hero section padding smaller on small screens */
+/* ---------- Responsiveness (media query for small screens) ---------- */
+/* We stack the hero columns on small screens to improve readability and tap targets. */
+@media (max-width: 700px) {
+  .nav-links { gap: 8px; }
   .hero {
-    padding: 60px 12px;
-  }
-
-  /* Make headline font size smaller so it fits on small screens */
-  .hero h1 {
-    font-size: 1.5rem;
-  }
-
-  /* Make subheadline font size smaller */
-  .hero p {
-    font-size: 1em;
-  }
-
-  /* Make story and call-to-action sections have less padding */
-  .story,
-  .call-to-action,
-  .donation-section {
-    padding: 14px 8px;
-  }
-
-  /* Make impact story image smaller and stack above the text */
-  .impact-content {
-    display: block; /* Stack items vertically */
-    text-align: center;
-  }
-
-  .impact-image {
-    width: 90%;    /* Make image take up most of the width */
-    max-width: 220px;
-  }
-
-  .story {
-    /* stack the image and text vertically */
     flex-direction: column;
-    padding: 20px 12px;
+    padding: 24px 12px;
   }
-  .story-image, .story-text {
-    width: 100%;
+  .hero-text h1 {
+    font-size: 1.4rem;
   }
-  .btn {
-    /* make buttons easier to tap on mobile */
+  .cta-button, .donate-btn {
     display: block;
     width: 100%;
-    box-sizing: border-box;
     text-align: center;
-  }
-}
-
-/* This media query applies styles when the screen is wider than 600px (like on tablets and computers) */
-@media (min-width: 601px) {
-  /* Show image and text side by side in the impact story */
-  .impact-content {
-    display: flex;           /* Place items in a row */
-    align-items: center;     /* Vertically center items */
-    justify-content: center; /* Center the whole group */
-    gap: 28px;               /* Space between image and text */
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .impact-image {
-    width: 300px;
   }
 }
